@@ -311,6 +311,28 @@
   }
 
   // --- Alarm & Background Notifications ---
+  const ALARM_VIBRATE_PATTERN = [250, 120, 250, 120, 450];
+
+  function triggerAlarmVibration() {
+    if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+      try {
+        navigator.vibrate(ALARM_VIBRATE_PATTERN);
+      } catch (_) {
+        // Ignore environments where vibration is restricted
+      }
+    }
+  }
+
+  function stopAlarmVibration() {
+    if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+      try {
+        navigator.vibrate(0);
+      } catch (_) {
+        // Ignore vibration cancel errors
+      }
+    }
+  }
+
   function triggerTimeUp() {
     isRunning = false;
     targetEndTime = null;
@@ -327,11 +349,13 @@
 
     updateDisplay();
 
-    // 1. Play Web Audio Chime Immediately & Repeat Every 2.8s until stopped
+    // 1. Play Web Audio Chime & Vibrate (Android) Immediately & Repeat Every 2.8s until stopped
     playAlarmPattern();
+    triggerAlarmVibration();
     clearInterval(alarmRepeatTimerId);
     alarmRepeatTimerId = setInterval(() => {
       playAlarmPattern();
+      triggerAlarmVibration();
     }, 2800);
 
     // 2. Blink Document Tab Title for Background Awareness
@@ -351,6 +375,7 @@
   function stopAlarmEffects() {
     if (!isAlarmRinging && !titleBlinkTimerId && !alarmRepeatTimerId) return;
     isAlarmRinging = false;
+    stopAlarmVibration();
 
     clearInterval(alarmRepeatTimerId);
     alarmRepeatTimerId = null;
@@ -378,6 +403,7 @@
       body: `Your ${formatEnglishDuration(totalSeconds)} timer has finished.`,
       icon: './icons/icon-192.png',
       badge: './icons/icon-192.png',
+      vibrate: ALARM_VIBRATE_PATTERN,
       tag: 'chronofocus-timer-complete',
       renotify: true,
       requireInteraction: true,
