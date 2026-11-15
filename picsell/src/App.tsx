@@ -207,7 +207,7 @@ export function App() {
       </header>
 
       {/* Main content */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-3 py-4 sm:px-6 sm:py-6">
+      <main className="mx-auto w-full max-w-5xl flex-1 px-3 py-2.5 sm:px-6 sm:py-6">
         {errorMsg && (
           <div className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
             {errorMsg}
@@ -269,9 +269,9 @@ export function App() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-8">
-            {/* Preview Canvas (Top on mobile, Left sticky on desktop) */}
-            <div className="lg:sticky lg:top-20">
+          <div className="grid grid-cols-1 gap-2.5 sm:gap-5 lg:grid-cols-[minmax(0,1fr)_400px] lg:items-start lg:gap-8">
+            {/* Preview Canvas (Sticky on mobile & desktop so image stays visible while editing) */}
+            <div className="sticky top-[49px] z-10 bg-slate-50/95 pb-1 backdrop-blur-xs lg:top-20 lg:bg-transparent lg:pb-0">
               <CanvasPreview
                 loadedImage={loadedImage}
                 resize={resize}
@@ -312,7 +312,7 @@ export function App() {
               </div>
 
               {/* Active Tab Panel */}
-              <div className="p-4 sm:p-5">
+              <div className="p-3 sm:p-5">
                 {activeTab === 'resize' && (
                   <ResizePanel resize={resize} onChange={setResize} />
                 )}

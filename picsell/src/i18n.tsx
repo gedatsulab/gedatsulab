@@ -77,6 +77,10 @@ export interface Messages {
   outlineWidth: string;
   textEmpty1: string;
   textEmpty2: string;
+  subTabContent: string;
+  subTabFont: string;
+  subTabTransform: string;
+  subTabStyle: string;
   exportFormatLabel: string;
   jpegTitle: string;
   jpegDesc: string;
@@ -149,6 +153,10 @@ const MESSAGES: Record<Locale, Messages> = {
     outlineWidth: '縁取りの太さ',
     textEmpty1: '上のボタンまたはプリセットからテキストを追加するか、',
     textEmpty2: 'キャンバス上のテキストをタップして編集してください。',
+    subTabContent: '文字入力',
+    subTabFont: '書体',
+    subTabTransform: 'サイズ・傾き',
+    subTabStyle: '色・縁取り',
     exportFormatLabel: '保存フォーマット (1080×1080px)',
     jpegTitle: 'JPEG (品質90%)',
     jpegDesc: '軽量・フリマ出品向け',
@@ -222,6 +230,10 @@ const MESSAGES: Record<Locale, Messages> = {
     outlineWidth: 'Outline Width',
     textEmpty1: 'Add text using the button or presets above,',
     textEmpty2: 'or tap any text on the canvas to edit it.',
+    subTabContent: 'Content',
+    subTabFont: 'Font',
+    subTabTransform: 'Size & Tilt',
+    subTabStyle: 'Color & Outline',
     exportFormatLabel: 'Export Format (1080×1080px)',
     jpegTitle: 'JPEG (90% Quality)',
     jpegDesc: 'Compact • Best for listings',

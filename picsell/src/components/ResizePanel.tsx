@@ -61,7 +61,7 @@ export const ResizePanel: React.FC<ResizePanelProps> = ({ resize, onChange }) =>
             </label>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-1.5 overflow-x-auto pb-1">
             {BG_QUICK_COLORS.map((swatch) => {
               const active = resize.bgColor.toLowerCase() === swatch.value.toLowerCase();
               const label = locale === 'ja' ? swatch.label : swatch.labelEn;
@@ -71,7 +71,7 @@ export const ResizePanel: React.FC<ResizePanelProps> = ({ resize, onChange }) =>
                   type="button"
                   title={label}
                   onClick={() => onChange({ ...resize, bgColor: swatch.value })}
-                  className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-medium transition ${
+                  className={`flex shrink-0 whitespace-nowrap items-center gap-1.5 rounded-full border px-2.5 py-1.5 text-xs font-medium transition ${
                     active
                       ? 'border-rose-500 bg-rose-50 text-rose-700 ring-1 ring-rose-500'
                       : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'

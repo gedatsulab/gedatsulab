@@ -156,7 +156,7 @@ export const CanvasPreview: React.FC<CanvasPreviewProps> = ({
 
   return (
     <div
-      className="relative mx-auto w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[540px]"
+      className="relative mx-auto w-full max-w-[min(100%,42dvh)] sm:max-w-[420px] lg:max-w-[540px]"
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -182,7 +182,7 @@ export const CanvasPreview: React.FC<CanvasPreviewProps> = ({
         )}
       </div>
 
-      <div className="mt-2 flex items-center justify-between px-1 text-[11px] text-slate-500">
+      <div className="mt-1 flex items-center justify-between px-1 text-[10px] text-slate-500">
         <span>
           {t.outputLabel}: {OUTPUT_SIZE}×{OUTPUT_SIZE}px
           {loadedImage.originalWidth > loadedImage.width && (
